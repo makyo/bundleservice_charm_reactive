@@ -4,7 +4,10 @@ from charms.reactive import (
     when,
     when_not,
 )
-from charmhelpers.core import host
+from charmhelpers.core import (
+    hookenv,
+    host,
+}
 
 
 @when_not('bundleservice-charm.installed')
@@ -27,8 +30,7 @@ def setup_nagios(nagios):
 
 
 def restart():
-    host.service_restart('bundleservice') or \
-        host.service_start('bundleservice')
+    host.service_restart('bundleservice')
 
 
 @hook('config-changed')
