@@ -1,0 +1,5 @@
+includes: ['layer:basic', 'layer:apt', 'layer:nagios', 'interface:nrpe-external-master']
+options:
+  apt:
+    packages:
+      - bundleservice
