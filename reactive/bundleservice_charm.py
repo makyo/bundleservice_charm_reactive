@@ -10,6 +10,12 @@ from charmhelpers.core import (
 )
 
 
+@when('apt.installed.bundleservice')
+def tell_the_world():
+    hookenv.status_set('active', 'ready')
+    restart()
+
+
 @when('nrpe-external-master.available')
 def setup_nagios(nagios):
     config = hookenv.config()
