@@ -3,16 +3,16 @@ options:
     type: string
     default: |
       - ppa:yellow/ppa
-    description: apt source list line from where to get bundleservices deb.
+    description: (READ ONLY) apt source list line from where to get bundleservices deb.
   install_keys:
     type: string
     default: |
       - null
-    description: list of keys to accept (none required for PPAs)
+    description: (READ ONLY) List of keys to accept (none required for PPAs)
   listen-port:
     type: int
     default: 8000
-    description: This is the tcp port on which the bundleservices server will listen for connections.
+    description: (READ ONLY) This is the tcp port on which the bundleservices server will listen for connections.
   nagios_context:
     default: "juju"
     type: string
