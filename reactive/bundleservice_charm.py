@@ -7,21 +7,17 @@ from charms.reactive import (
 from charmhelpers.core import (
     hookenv,
     host,
-}
-
-
-@when_not('bundleservice-charm.installed')
-def install_bundleservice_charm():
-    set_state('bundleservice-charm.installed')
+)
 
 
 @when('nrpe-external-master.available')
 def setup_nagios(nagios):
     config = hookenv.config()
     unit_name = hookenv.local_unit()
-    nagios.add_check(['/usr/lib/nagios/plugins/check_http',
-        '-I', '127.0.0.1', '-p', str(config['port']),
-        '-e', " 404 Not Found", '-u', '/'],
+    nagios.add_check(
+        ['/usr/lib/nagios/plugins/check_http',
+         '-I', '127.0.0.1', '-p', str(config['port']),
+         '-e', " 404 Not Found", '-u', '/'],
         name="check_http",
         description="Verify bundleservice is running",
         context=config["nagios_context"],
